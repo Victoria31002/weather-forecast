@@ -3,6 +3,7 @@ import Icons from "../img/Icons.png"
 
 function Today() {
     return (
+
         <div className={'info-today'}>
             <div className={'location'}>
                 <div>

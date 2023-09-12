@@ -42,10 +42,6 @@ p, h1, h2, h3, h4, h5, h6 {
     margin: 16px;
 }
 
-.home-page {
-
-}
-
 .content{
     margin: 25px;
     border-radius:8px ;
@@ -73,12 +69,8 @@ p, h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
-.today{
-
-}
-
 .info-today{
-    background-image: url("./img/WeatherCloudsNight.png");
+    background-image: url("./img/Background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     margin: 16px;
@@ -99,12 +91,15 @@ p, h1, h2, h3, h4, h5, h6 {
     padding-right: 32px;
 }
 
-/*.location{*/
-/*   */
-/*}*/
-.disp{
-    display: flex;
-    padding: 32px;
+.container-details{
+    background: rgba(22, 22, 31, 1);
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.header-details{
+    padding-right: 420px;
+    color: rgba(191, 191, 212, 1);
 }
 
 .details{
@@ -122,4 +117,33 @@ p, h1, h2, h3, h4, h5, h6 {
     width: 8px;
     height: 8px;
     border-radius: 4px;
+}
+
+.details-list{
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    padding-top: 20px;
+
+}
+
+.details-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.details-title{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.font-c{
+    color: rgba(191, 191, 212, 1);
+}
+
+hr{
+    border-color: rgba(28, 28, 39, 1);
 }
