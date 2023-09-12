@@ -1,14 +1,17 @@
 import React from "react";
 import SearchBar from "./SearchBar";
+import WeatherDetails from "./WeatherDetails";
+import Today from "./Today";
 
 function MainPart() {
     return (
         <div style={{display: "flex"}}>
 
-            <div className={'home-page content'}>
-                <SearchBar/>
+            <div className={'content'}>
+               <SearchBar/>
+                <Today/>
             </div>
-            <div className={"details content"}>
+            <div className={"content"}>
 
             </div>
         </div>
