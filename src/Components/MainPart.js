@@ -11,9 +11,11 @@ function MainPart() {
                 <SearchBar/>
                 <Today/>
             </div>
-            <div style={{margin: "25px"}}>
+            <div  style={{margin: "25px"}}>
                 <WeatherDetails/>
+                <NextDay/>
             </div>
+
         </div>
 
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Icons from "../img/Icons.png"
+import Icons from "../img/icons/Icons.svg"
 
 function Today() {
     return (

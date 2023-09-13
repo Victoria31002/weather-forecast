@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../img/Logo.png"
+import Logo from "../img/logo/Logo.svg"
 
 function SearchBar() {
     return (
