@@ -1,12 +1,11 @@
 import React from "react";
 import './App.css';
-import SearchBar from "./Components/SearchBar";
-import MainPart from "./Components/MainPart";
+import Main from "./Components/Main";
 
 function App() {
     return (
         <div className={"container"}>
-            <MainPart/>
+            <Main/>
         </div>
     );
 }

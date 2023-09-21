@@ -1,4 +1,28 @@
 
+#root {
+    --text-color-white: rgba(255, 255, 255, 1);
+    --text-color-gray100: rgba(250, 250, 250, 1);
+    --text-color-gray200: rgba(191, 191, 212, 1);
+    --text-color-gray300: rgba(171, 171, 196, 1);
+    --text-color-gray400: rgba(127, 127, 152, 1);
+    --bg-color-gray500: rgba(59, 59, 84, 1);
+    --bg-color-gray600: rgba(30, 30, 41, 1);
+    --bg-color-gray700: rgba(28, 28, 39, 1);
+    --bg-color-gray800: rgba(22, 22, 31, 1);
+    --bg-color-gray900: rgba(19, 19, 26, 1);
+    --heading-hg: 96px;
+    --heading-xl: 48px;
+    --heading-lg: 32px;
+    --text-lg: 20px;
+    --text-md: 16px;
+    --text-sm: 14px;
+    --text-xs: 12px;
+    --text-bold: 700;
+    --text-regular: 400;
+    --text-extra-bold: 800;
+
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -31,28 +55,78 @@ p, h1, h2, h3, h4, h5, h6 {
 
 /*///////////////////////////////////////////////*/
 
+@font-face {
+    font-family: 'Nunito';
+    src: local("Nunito"),
+    url("./fonts/static/Nunito-Bold.ttf");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: local("Nunito"),
+    url("./fonts/static/Nunito-ExtraBold.ttf");
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: local("Nunito"),
+    url("./fonts/static/Nunito-Regular.ttf");
+    font-weight: 400;
+    font-style: normal;
+}
+
+.weather-app {
+    display: flex;
+    gap: 25px;
+    font-family: 'Nunito';
+}
+
+.h1 {
+    font-weight: 700;
+    font-style: normal;
+    font-size: 20px;
+}
+
 .container {
     display: flex;
     justify-content: center;
-    margin: 25px;
+    padding: 25px;
+
 }
 
-.header {
+.header-weather-panel {
     display: flex;
-    margin: 16px;
+    gap: 16px;
 }
 
-.content {
-    margin: 25px;
+.weather-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     border-radius: 8px;
-    background: rgba(22, 22, 31, 1);
+    background: var(--bg-color-gray800);
+    padding: 16px;
+    width: 632px;
+}
+
+.logo-wrapper {
+    background: var(--bg-color-gray600);
+    border-radius: 8px;
+    padding: 8px;
 }
 
 .logo {
-    margin-right: 12px;
-    background: rgba(30, 30, 41, 1);
-    border-radius: 8px;
-    padding: 8px;
+    max-width: 40px;
+}
+
+.today-temp {
+    display: flex;
+    margin-top: auto;
+    color: var(--text-color-white);
 }
 
 .search-bar {
@@ -64,56 +138,160 @@ p, h1, h2, h3, h4, h5, h6 {
 .input {
     background: none;
     border: none;
-    borderRadius: 8px;
+    border-radius: 8px;
     padding: 17px 20px;
     width: 100%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--text-color-gray100);
 }
 
 .info-today {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-image: url("./img/background/FewCloudsNight.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    margin: 16px;
     border-radius: 8px;
+    height: 100%;
+    padding: 32px;
 }
 
 .location {
     display: flex;
-    padding: 32px;
     justify-content: space-between;
-    color: rgba(255, 255, 255, 1);
+    color: var(--text-color-gray100);
 }
+
+/*//////////////////////////////////*/
+
+.big-text{
+    font-weight: var(--text-bold);
+    font-size: var(--text-lg);
+}
+
+.small-text{
+    font-weight: var(--text-regular);
+    font-size: var(--text-sm);
+}
+
+.medium-text{
+    font-size: var(--text-md);
+    font-weight: var(--text-regular);
+}
+
+/*////////////////////////////////////*/
+
+.location-address {
+    font-weight: var(--text-bold);
+    font-size: var(--text-lg);
+}
+
+.location-time {
+    font-weight: var(--text-bold);
+    font-size: var(--text-lg);
+}
+
+.details-value {
+    font-weight: var(--text-bold);
+    font-size: var(--text-lg);
+    color: var(--text-color-gray100);
+}
+
+.temp-day {
+    font-weight: var(--text-bold);
+    font-size: var(--text-lg);
+}
+
+.description-day {
+    font-weight: var(--text-regular);
+    font-size: var(--text-lg);
+}
+
+.location-data {
+    font-weight: var(--text-regular);
+    font-size: var(--text-md);
+}
+
+
+
+
+
+.temp-value {
+    font-weight: var(--text-extra-bold);
+    font-size: var(--heading-hg);
+}
+
+.h2 {
+    color: var(--text-color-gray400);
+    font-size: var(--text-md);
+    font-weight: var(--text-regular);
+}
+
+.h3 {
+    color: var(--text-color-gray200);
+    font-size: var(--text-sm);
+    font-weight: var(--text-bold);
+}
+
+.info {
+    font-weight: var(--text-regular);
+    font-size: var(--text-sm);
+    color: var(--text-color-gray200);
+}
+
+.info-item {
+    display: flex;
+    gap: 8px;
+    font-weight: var(--text-bold);
+    font-size: var(--text-sm);
+    color: var(--text-color-gray100);
+}
+
 
 .weather-today {
     display: flex;
-    padding-top: 250px;
-    padding-left: 32px;
-    padding-right: 32px;
+    justify-content: space-between;
+    color: var(--text-color-white);
 }
 
 .container-details {
-    background: rgba(22, 22, 31, 1);
+    background: var(--bg-color-gray800);
     border-radius: 8px;
-    padding: 25px;
+    padding: 24px;
+    padding-top: 28px;
 }
 
-.header-details {
-    /*padding-right: 420px;*/
-    /*color: rgba(191, 191, 212, 1);*/
-}
+
 
 .details {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: rgba(255, 255, 255, 1);
-    padding-bottom: 36px;
+}
 
+.weather-description {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.icon-wrapper {
+    color: #22d9c8;
+}
+
+.wrapper-img {
+    max-width: 248px;
+    max-height: 248px;
+    margin-right: -32px;
+    margin-bottom: -32px;
 }
 
 .divider {
     opacity: 40%;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: var(--text-color-white);
     width: 8px;
     height: 8px;
     border-radius: 4px;
@@ -140,52 +318,38 @@ p, h1, h2, h3, h4, h5, h6 {
     align-items: center;
 }
 
-.font-c {
-    color: rgba(191, 191, 212, 1);
-}
-
 hr {
-    border-color: rgba(28, 28, 39, 1);
+    border-color: var(--bg-color-gray700);
 }
 
-.h2 {
-    color: rgba(127, 127, 152, 1);
-    font-size: 16px;
-}
 
-.h3 {
-    color: rgba(191, 191, 212, 1);
-    font-size: 14px;
-}
 
 .next-days {
     display: flex;
     align-items: center;
     text-align: center;
+    padding-top: 20px;
 }
 
 .day {
-    margin: 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    padding: 28px 26px;
 }
 
-.font-c2 {
-    color: rgba(127, 127, 152, 1)
-}
 
-.info {
-    padding: 12px 0;
-}
+
 
 .weather-img {
     width: 67px;
+    height: 67px;
 }
 
-.info-item {
+.info-distance {
     display: flex;
-    gap: 8px;
+    flex-direction: column;
+    gap: 4px;
 }
 
-.day-title {
-    padding-top: 28px;
-    padding-bottom: 12px;
-}
