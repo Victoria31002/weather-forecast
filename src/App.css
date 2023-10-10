@@ -20,6 +20,7 @@
     --text-bold: 700;
     --text-regular: 400;
     --text-extra-bold: 800;
+    --accent-color: #22d9c8;
 
 }
 
@@ -79,10 +80,11 @@ p, h1, h2, h3, h4, h5, h6 {
     font-style: normal;
 }
 
-.weather-app {
+
+.forecast{
     display: flex;
     gap: 25px;
-    font-family: 'Nunito';
+    font-family: 'Nunito', serif;
 }
 
 .h1 {
@@ -98,34 +100,39 @@ p, h1, h2, h3, h4, h5, h6 {
 
 }
 
-.header-weather-panel {
+.header {
     display: flex;
     gap: 16px;
 }
 
-.weather-panel {
+
+.forecast__column1 {
     display: flex;
     flex-direction: column;
     gap: 16px;
     border-radius: 8px;
     background: var(--bg-color-gray800);
     padding: 16px;
-    width: 632px;
 }
 
-.logo-wrapper {
+.header__logo-wrapper {
     background: var(--bg-color-gray600);
     border-radius: 8px;
     padding: 8px;
 }
 
-.logo {
+.header__logo {
     max-width: 40px;
 }
 
-.today-temp {
+.weather-today__temp {
     display: flex;
+    flex-direction: column;
     margin-top: auto;
+    color: var(--text-color-white);
+}
+
+.temp{
     color: var(--text-color-white);
 }
 
@@ -138,6 +145,9 @@ p, h1, h2, h3, h4, h5, h6 {
 .input {
     background: none;
     border: none;
+}
+
+.search-bar__input{
     border-radius: 8px;
     padding: 17px 20px;
     width: 100%;
@@ -161,73 +171,53 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .location {
     display: flex;
-    justify-content: space-between;
+    gap: 260px;
     color: var(--text-color-gray100);
 }
 
-/*//////////////////////////////////*/
 
-.big-text{
+.location__address {
     font-weight: var(--text-bold);
     font-size: var(--text-lg);
 }
 
-.small-text{
-    font-weight: var(--text-regular);
-    font-size: var(--text-sm);
-}
-
-.medium-text{
-    font-size: var(--text-md);
-    font-weight: var(--text-regular);
-}
-
-/*////////////////////////////////////*/
-
-.location-address {
+.location__time {
     font-weight: var(--text-bold);
     font-size: var(--text-lg);
 }
 
-.location-time {
-    font-weight: var(--text-bold);
-    font-size: var(--text-lg);
-}
-
-.details-value {
+.details-list__value {
     font-weight: var(--text-bold);
     font-size: var(--text-lg);
     color: var(--text-color-gray100);
 }
 
-.temp-day {
+.temp__today {
     font-weight: var(--text-bold);
     font-size: var(--text-lg);
 }
 
-.description-day {
+.temp__desc {
     font-weight: var(--text-regular);
     font-size: var(--text-lg);
 }
 
-.location-data {
+.location__data {
     font-weight: var(--text-regular);
     font-size: var(--text-md);
 }
 
 
-
-
-
-.temp-value {
+.temp__value {
     font-weight: var(--text-extra-bold);
     font-size: var(--heading-hg);
 }
 
 .h2 {
-    color: var(--text-color-gray400);
-    font-size: var(--text-md);
+    color: var(--text-color-gray200);
+    font-size: var(--text-lg);
     font-weight: var(--text-regular);
+    margin-bottom: 20px;
 }
 
 .h3 {
@@ -236,18 +226,22 @@ p, h1, h2, h3, h4, h5, h6 {
     font-weight: var(--text-bold);
 }
 
-.info {
+.day__status {
     font-weight: var(--text-regular);
     font-size: var(--text-sm);
     color: var(--text-color-gray200);
 }
 
-.info-item {
+.day__temp-wrapper {
     display: flex;
     gap: 8px;
     font-weight: var(--text-bold);
     font-size: var(--text-sm);
     color: var(--text-color-gray100);
+}
+
+.day__night-temp{
+    color: var(--text-color-gray400);
 }
 
 
@@ -257,32 +251,30 @@ p, h1, h2, h3, h4, h5, h6 {
     color: var(--text-color-white);
 }
 
-.container-details {
+.details-wrapper {
     background: var(--bg-color-gray800);
     border-radius: 8px;
     padding: 24px;
     padding-top: 28px;
 }
 
-
-
-.details {
+.temp__details {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.weather-description {
+.forecast__column2 {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
 .icon-wrapper {
-    color: #22d9c8;
+    color: var(--accent-color);
 }
 
-.wrapper-img {
+.weather-today__img-wrapper {
     max-width: 248px;
     max-height: 248px;
     margin-right: -32px;
@@ -305,14 +297,13 @@ p, h1, h2, h3, h4, h5, h6 {
 
 }
 
-.details-item {
+.details-list__item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
 }
 
-.details-title {
+.details-list__title {
     display: flex;
     gap: 12px;
     align-items: center;
@@ -328,28 +319,23 @@ hr {
     display: flex;
     align-items: center;
     text-align: center;
-    padding-top: 20px;
 }
 
-.day {
+.next-days__card {
     display: flex;
     flex-direction: column;
     gap: 12px;
     align-items: center;
-    padding: 28px 26px;
+    padding: 28px 24px;
 }
 
-
-
-
-.weather-img {
+.img-wrapper {
     width: 67px;
     height: 67px;
 }
 
-.info-distance {
+.day__desc {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
-

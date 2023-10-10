@@ -6,26 +6,28 @@ function Today() {
         <div className={'info-today'}>
             <div className={'location'}>
                 <div>
-                    <h1 className={"location-address"}>Los-Angeles, California</h1>
+                    <h1 className={"location__address"}>Los-Angeles, California</h1>
                     <p className={"location-data"}>Monday, 15 september 2023</p>
                 </div>
-                <p className={"location-time"}>21:39</p>
+                <p className={"location__time"}>21:39</p>
             </div>
             <div className={'weather-today'}>
-                <div className={"today-temp"}>
-                   <div>
-                       <p className={"temp-value"}>28ºc</p>
+                <div className={"weather-today__temp temp"}>
+                    
+                       <p className={"temp__value"}>28ºc</p>
 
-                       <div className={"details"}>
-                           <p className={"temp-day"}>32ºc / 26ºc </p>
+                       <div className={"temp__details"}>
+
+                           <p className={"temp__today"}>32ºc / 26ºc </p>
+
                            <div className={"divider"}/>
-                           <p className={"description-day"}>Сloudy</p>
+
+                           <p className={"temp__desc"}>Cloudy</p>
                        </div>
-                   </div>
                 </div>
 
-               <div className={"wrapper-img"}>
-                    <img src={Icons} alt={""}/>
+               <div className={"weather-today__img-wrapper"}>
+                    <img src={Icons} alt={"weather-today"}/>
                 </div>
             </div>
         </div>

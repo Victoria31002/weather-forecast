@@ -4,7 +4,7 @@ function SearchBar() {
     return (
         <div className={"search-bar"}>
             <input
-                className={'input'}
+                className={'input search-bar__input'}
                 type="text"
                 placeholder="Search location"
             />

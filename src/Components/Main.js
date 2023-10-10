@@ -6,22 +6,22 @@ import UpcomingDays from "./UpcomingDays";
 import Logo from "../img/logo/Logo.svg";
 
 function Main() {
+
     return (
-        <div className={"weather-app"}>
-            <div className={'weather-panel'}>
-                <div className={"header-weather-panel"}>
-                    <div className={"logo-wrapper"}>
-                        <img src={Logo} alt={"logo"} className={"logo"}/>
+        <div className={"forecast"}>
+            <div className={'forecast__column1 '}>
+                <div className={"header"}>
+                    <div className={" header__logo-wrapper"}>
+                        <img src={Logo} alt={"logo"} className={" header__logo"}/>
                     </div>
                     <SearchBar/>
                 </div>
                 <Today/>
             </div>
-            <div className={"weather-description"}>
+            <div className={" forecast__column2"}>
                 <WeatherDetails/>
                 <UpcomingDays/>
             </div>
-
         </div>
 
 
