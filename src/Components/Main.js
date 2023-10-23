@@ -1,11 +1,27 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import SearchBar from "./SearchBar";
 import WeatherDetails from "./WeatherDetails";
 import Today from "./Today";
 import UpcomingDays from "./UpcomingDays";
 import Logo from "../img/logo/Logo.svg";
 
+
+//ХУКИ ВСЕ ОТ КОРКИ ДО КОРКИ
+
+async function getCities(){
+    return fetch('https://simple-weather-xrgybod3fq-ew.a.run.app/api/v1/cities')
+        .then(response => response.json())//ПОВТОРИТЬ
+}
+
 function Main() {
+
+    const [cities, setCities] = useState(['minsk'])//РАЗОБРАТЬ
+   useEffect(()=> {
+       getCities().then(response => {
+           console.log(response)
+           setCities(response.cities)//ЭТОТ МОМЕНТ РАЗОБРАТЬ ЕЩЕ РАЗ
+       })
+   }, [])
 
     return (
         <div className={"forecast"}>
@@ -15,6 +31,10 @@ function Main() {
                         <img src={Logo} alt={"logo"} className={" header__logo"}/>
                     </div>
                     <SearchBar/>
+                    <select>
+                        {cities.map(city => <option>{city}</option>)}
+                    </select>
+
                 </div>
                 <Today/>
             </div>
