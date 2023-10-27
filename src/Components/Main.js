@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState, useEffect} from "react";
 import SearchBar from "./SearchBar";
 import WeatherDetails from "./WeatherDetails";
 import Today from "./Today";
@@ -15,7 +15,7 @@ async function getCities(){
 
 function Main() {
 
-    const [cities, setCities] = useState(['minsk'])//РАЗОБРАТЬ
+    const [cities, setCities] = useState([''])//РАЗОБРАТЬ
    useEffect(()=> {
        getCities().then(response => {
            console.log(response)
@@ -30,10 +30,10 @@ function Main() {
                     <div className={" header__logo-wrapper"}>
                         <img src={Logo} alt={"logo"} className={" header__logo"}/>
                     </div>
-                    <SearchBar/>
-                    <select>
-                        {cities.map(city => <option>{city}</option>)}
-                    </select>
+                    <SearchBar cities={cities}/>
+                    {/*<select>*/}
+                    {/*    {cities.map(city => <option>{city}</option>)}*/}
+                    {/*</select>*/}
 
                 </div>
                 <Today/>
