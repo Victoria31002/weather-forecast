@@ -81,7 +81,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 
-.forecast{
+.forecast {
     display: flex;
     gap: 25px;
     font-family: 'Nunito', serif;
@@ -112,6 +112,7 @@ p, h1, h2, h3, h4, h5, h6 {
     gap: 16px;
     border-radius: 8px;
     background: var(--bg-color-gray800);
+    /*background-color: #7f7f98;*/
     padding: 16px;
 }
 
@@ -119,10 +120,12 @@ p, h1, h2, h3, h4, h5, h6 {
     background: var(--bg-color-gray600);
     border-radius: 8px;
     padding: 8px;
+    max-height: 56px;
 }
 
 .header__logo {
     max-width: 40px;
+
 }
 
 .weather-today__temp {
@@ -132,17 +135,16 @@ p, h1, h2, h3, h4, h5, h6 {
     color: var(--text-color-white);
 }
 
-.temp{
+.temp {
     color: var(--text-color-white);
 }
-
 
 
 .info-today {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-image: url("./img/background/FewCloudsNight.jpg");
+    background-image: url("./img/background/FewCloudsDay.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 8px;
@@ -221,7 +223,7 @@ p, h1, h2, h3, h4, h5, h6 {
     color: var(--text-color-gray100);
 }
 
-.day__night-temp{
+.day__night-temp {
     color: var(--text-color-gray400);
 }
 
@@ -234,6 +236,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .details-wrapper {
     background: var(--bg-color-gray800);
+    /*background-color: #7f7f98;*/
     border-radius: 8px;
     padding: 24px;
     padding-top: 28px;
@@ -295,7 +298,6 @@ hr {
 }
 
 
-
 .next-days {
     display: flex;
     align-items: center;
@@ -327,9 +329,9 @@ hr {
 .search-bar {
     width: 100%;
     color: var(--text-color-gray100);
+    border-radius: 8px;
 }
 
-span{
-    display: none;
-}
+
+
 

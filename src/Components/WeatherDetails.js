@@ -6,7 +6,12 @@ import {ReactComponent as Humidity} from "../img/icons/Humidity.svg";
 import {ReactComponent as Sun} from "../img/icons/Sun.svg";
 
 
-function WeatherDetails() {
+function WeatherDetails({weatherData}) {
+    if (!weatherData) {
+        return null;
+    }
+    const {apparent_temperature_max, uv_index, humidity, wind_speed, precipitation_probability_mean
+    } = weatherData;
     return (
 
         <div className={"details-wrapper "}>
@@ -14,22 +19,22 @@ function WeatherDetails() {
                 <h2 className={"h2"}>Today's weather details</h2>
             </div>
             <div className={"details-list"}>
-                <DetailsItem Icon={Temp} desc={"Thermal sensation"} value={"26ºc"}/>
+                <DetailsItem Icon={Temp} desc={"Thermal sensation"} value={`${apparent_temperature_max}ºC`}/>
                 <hr/>
-                <DetailsItem Icon={Rain} desc={"Probability of rain"} value={"0%"}/>
+                <DetailsItem Icon={Rain} desc={"Probability of rain"} value={`${precipitation_probability_mean}%`}/>
                 <hr/>
-                <DetailsItem Icon={Wind} desc={"Wind speed"} value={"8 km/h"}/>
+                <DetailsItem Icon={Wind} desc={"Wind speed"} value={`${wind_speed} km/h`}/>
                 <hr/>
-                <DetailsItem Icon={Humidity} desc={"Air humidity"} value={"40%"}/>
+                <DetailsItem Icon={Humidity} desc={"Air humidity"} value={`${humidity}%`}/>
                 <hr/>
-                <DetailsItem Icon={Sun} desc={"UV Index"} value={"5"}/>
+                <DetailsItem Icon={Sun} desc={"UV Index"} value={`${uv_index}`}/>
             </div>
         </div>
     )
 }
 
-function DetailsItem({Icon, desc, value}){
-    return(<div className={"details-list__item "}>
+function DetailsItem({Icon, desc, value}) {
+    return (<div className={"details-list__item "}>
         <div className={"details-list__title"}>
             <div className={"icon-wrapper"}>
                 <Icon/>
@@ -42,3 +47,5 @@ function DetailsItem({Icon, desc, value}){
 }
 
 export default WeatherDetails
+
+// ºc

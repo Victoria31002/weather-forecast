@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Select from "react-select";
 
 
@@ -22,7 +22,6 @@ const customStyles = {
         cursor: 'pointer;',
         boxShadow: 'none;',
 
-
     }),
 
     menu: (provided, state) => ({
@@ -35,32 +34,46 @@ const customStyles = {
         ...provided,
         color: 'var((--text-color-gray100))',
 
+
     }),
     input: (provided, state) => ({
         ...provided,
         color: 'var((--text-color-gray100))',
 
-    })
+    }),
+
 };
 
 
-const DropdownIndicator = () => null;
+function SearchBar({ cities, onCityChange }) {
+    const [selectedCity, setSelectedCity] = useState(null);
 
-function SearchBar({cities}) {
+
     const options = cities.map((city) => ({
         value: city,
         label: city,
     }));
 
-    const onCitySelect = (city) =>{
-        console.log(city)
-    }
+    const handleCityChange = (selectedOption) => {
+        setSelectedCity(selectedOption);
+
+        if (selectedOption) {
+            const city = selectedOption.value;
+            onCityChange(city);
+        }
+    };
 
     return (
-        <div className="search-bar">
-            <Select onChange={onCitySelect} options={options} styles={customStyles} placeholder={'Search location'}
-                    components={{DropdownIndicator}} maxMenuHeight={289}/>
-        </div>
+           <div className={'search-bar'}>
+               <Select
+                   value={selectedCity}
+                   onChange={handleCityChange}
+                   options={options}
+                   styles={customStyles}
+                   placeholder={"Search location"}
+                   maxMenuHeight={289}
+               />
+           </div>
     );
 }
 

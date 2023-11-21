@@ -6,22 +6,41 @@ import UpcomingDays from "./UpcomingDays";
 import Logo from "../img/logo/Logo.svg";
 
 
-//ХУКИ ВСЕ ОТ КОРКИ ДО КОРКИ
-
-async function getCities(){
+async function getCities() {
     return fetch('https://simple-weather-xrgybod3fq-ew.a.run.app/api/v1/cities')
-        .then(response => response.json())//ПОВТОРИТЬ
+        .then(response => response.json())
+        .catch((error) => {
+            console.error("Ошибка при получении данных о городе: " + error);
+        });
 }
 
 function Main() {
 
-    const [cities, setCities] = useState([''])//РАЗОБРАТЬ
-   useEffect(()=> {
-       getCities().then(response => {
-           console.log(response)
-           setCities(response.cities)//ЭТОТ МОМЕНТ РАЗОБРАТЬ ЕЩЕ РАЗ
-       })
-   }, [])
+    const [cities, setCities] = useState(['']);
+    const [weatherData, setWeatherData] = useState(null);
+
+
+    useEffect(() => {
+        getCities().then(response => {
+            console.log(response)
+            setCities(response.cities)
+        })
+    }, [])
+
+    const handleCityChange = (city) => {
+        if (city) {
+            fetch(`https://simple-weather-xrgybod3fq-ew.a.run.app/api/v1/weather?cityName=${city}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    setWeatherData(data);
+                })
+                .catch((error) => {
+                    console.error("Ошибка при получении данных о погоде: " + error);
+                });
+        }
+    };
+
 
     return (
         <div className={"forecast"}>
@@ -30,17 +49,13 @@ function Main() {
                     <div className={" header__logo-wrapper"}>
                         <img src={Logo} alt={"logo"} className={" header__logo"}/>
                     </div>
-                    <SearchBar cities={cities}/>
-                    {/*<select>*/}
-                    {/*    {cities.map(city => <option>{city}</option>)}*/}
-                    {/*</select>*/}
-
+                    <SearchBar cities={cities} onCityChange={handleCityChange}/>
                 </div>
-                <Today/>
+                <Today weatherData={weatherData}/>
             </div>
             <div className={" forecast__column2"}>
-                <WeatherDetails/>
-                <UpcomingDays/>
+                <WeatherDetails weatherData={weatherData}/>
+                <UpcomingDays weatherData={weatherData}/>
             </div>
         </div>
 
