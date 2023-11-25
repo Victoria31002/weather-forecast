@@ -18,12 +18,15 @@ function Main() {
 
     const [cities, setCities] = useState(['']);
     const [weatherData, setWeatherData] = useState(null);
+    const [isLoading, setIsLoading]= useState(false);
 
 
     useEffect(() => {
+        setIsLoading(true);
         getCities().then(response => {
             console.log(response)
-            setCities(response.cities)
+            setCities(response.cities);
+            setIsLoading(false);
         })
     }, [])
 
@@ -34,6 +37,7 @@ function Main() {
                 .then((data) => {
                     console.log(data);
                     setWeatherData(data);
+                    console.log(data)
                 })
                 .catch((error) => {
                     console.error("Ошибка при получении данных о погоде: " + error);
@@ -49,7 +53,7 @@ function Main() {
                     <div className={" header__logo-wrapper"}>
                         <img src={Logo} alt={"logo"} className={" header__logo"}/>
                     </div>
-                    <SearchBar cities={cities} onCityChange={handleCityChange}/>
+                    <SearchBar cities={cities} onCityChange={handleCityChange} isLoading={isLoading}/>
                 </div>
                 <Today weatherData={weatherData}/>
             </div>

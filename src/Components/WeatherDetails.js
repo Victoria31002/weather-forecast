@@ -12,6 +12,8 @@ function WeatherDetails({weatherData}) {
     }
     const {apparent_temperature_max, uv_index, humidity, wind_speed, precipitation_probability_mean
     } = weatherData;
+    const apparent_temp_max = Math.floor(apparent_temperature_max)
+    const wind = Math.floor(wind_speed)
     return (
 
         <div className={"details-wrapper "}>
@@ -19,11 +21,11 @@ function WeatherDetails({weatherData}) {
                 <h2 className={"h2"}>Today's weather details</h2>
             </div>
             <div className={"details-list"}>
-                <DetailsItem Icon={Temp} desc={"Thermal sensation"} value={`${apparent_temperature_max}ºC`}/>
+                <DetailsItem Icon={Temp} desc={"Thermal sensation"} value={`${apparent_temp_max}ºC`}/>
                 <hr/>
                 <DetailsItem Icon={Rain} desc={"Probability of rain"} value={`${precipitation_probability_mean}%`}/>
                 <hr/>
-                <DetailsItem Icon={Wind} desc={"Wind speed"} value={`${wind_speed} km/h`}/>
+                <DetailsItem Icon={Wind} desc={"Wind speed"} value={`${wind} km/h`}/>
                 <hr/>
                 <DetailsItem Icon={Humidity} desc={"Air humidity"} value={`${humidity}%`}/>
                 <hr/>
@@ -34,6 +36,7 @@ function WeatherDetails({weatherData}) {
 }
 
 function DetailsItem({Icon, desc, value}) {
+
     return (<div className={"details-list__item "}>
         <div className={"details-list__title"}>
             <div className={"icon-wrapper"}>
@@ -48,4 +51,3 @@ function DetailsItem({Icon, desc, value}) {
 
 export default WeatherDetails
 
-// ºc

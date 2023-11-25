@@ -54,8 +54,6 @@ p, h1, h2, h3, h4, h5, h6 {
     isolation: isolate;
 }
 
-/*///////////////////////////////////////////////*/
-
 @font-face {
     font-family: 'Nunito';
     src: local("Nunito"),
@@ -112,8 +110,8 @@ p, h1, h2, h3, h4, h5, h6 {
     gap: 16px;
     border-radius: 8px;
     background: var(--bg-color-gray800);
-    /*background-color: #7f7f98;*/
     padding: 16px;
+    width: 632px;
 }
 
 .header__logo-wrapper {
@@ -125,7 +123,6 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .header__logo {
     max-width: 40px;
-
 }
 
 .weather-today__temp {
@@ -139,12 +136,10 @@ p, h1, h2, h3, h4, h5, h6 {
     color: var(--text-color-white);
 }
 
-
 .info-today {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-image: url("./img/background/FewCloudsDay.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 8px;
@@ -154,10 +149,9 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .location {
     display: flex;
-    gap: 260px;
+    gap: 215px;
     color: var(--text-color-gray100);
 }
-
 
 .location__address {
     font-weight: var(--text-bold);
@@ -166,7 +160,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .location__time {
     font-weight: var(--text-bold);
-    font-size: var(--text-lg);
+    font-size: var(--heading-lg);
 }
 
 .details-list__value {
@@ -189,7 +183,6 @@ p, h1, h2, h3, h4, h5, h6 {
     font-weight: var(--text-regular);
     font-size: var(--text-md);
 }
-
 
 .temp__value {
     font-weight: var(--text-extra-bold);
@@ -227,7 +220,6 @@ p, h1, h2, h3, h4, h5, h6 {
     color: var(--text-color-gray400);
 }
 
-
 .weather-today {
     display: flex;
     justify-content: space-between;
@@ -236,7 +228,6 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .details-wrapper {
     background: var(--bg-color-gray800);
-    /*background-color: #7f7f98;*/
     border-radius: 8px;
     padding: 24px;
     padding-top: 28px;
@@ -259,8 +250,6 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .weather-today__img-wrapper {
-    max-width: 248px;
-    max-height: 248px;
     margin-right: -32px;
     margin-bottom: -32px;
 }
@@ -278,7 +267,6 @@ p, h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     row-gap: 15px;
     padding-top: 20px;
-
 }
 
 .details-list__item {
@@ -322,9 +310,6 @@ hr {
     flex-direction: column;
     gap: 4px;
 }
-
-
-/*////////////////////////////////*/
 
 .search-bar {
     width: 100%;

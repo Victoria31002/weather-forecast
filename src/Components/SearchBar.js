@@ -45,8 +45,9 @@ const customStyles = {
 };
 
 
-function SearchBar({ cities, onCityChange }) {
+function SearchBar({cities, onCityChange, isLoading}) {
     const [selectedCity, setSelectedCity] = useState(null);
+
 
 
     const options = cities.map((city) => ({
@@ -63,17 +64,20 @@ function SearchBar({ cities, onCityChange }) {
         }
     };
 
+
+
     return (
-           <div className={'search-bar'}>
-               <Select
-                   value={selectedCity}
-                   onChange={handleCityChange}
-                   options={options}
-                   styles={customStyles}
-                   placeholder={"Search location"}
-                   maxMenuHeight={289}
-               />
-           </div>
+        <div className={'search-bar'}>
+            <Select
+                value={selectedCity}
+                onChange={handleCityChange}
+                options={options}
+                styles={customStyles}
+                placeholder={"Search location"}
+                maxMenuHeight={289}
+                isLoading={isLoading}
+            />
+        </div>
     );
 }
 

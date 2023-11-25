@@ -1,11 +1,11 @@
 import React from "react";
-import {ReactComponent as Sun} from "../img/weather/Sun.svg";
-import {ReactComponent as Cloudy} from "../img/weather/Cloudy.svg";
-import {ReactComponent as Rain} from "../img/weather/Rain.svg";
-import {ReactComponent as Snow} from "../img/weather/Snow.svg";
-import {ReactComponent as Storm} from "../img/weather/Storm.svg";
-
-
+import {ReactComponent as ClearDay} from "../img/weather/ClearDay.svg";
+import {ReactComponent as CloudyDay} from "../img/weather/CloudyDay.svg";
+import {ReactComponent as RainDay} from "../img/weather/RainDay.svg";
+import {ReactComponent as SnowDay} from "../img/weather/SnowDay.svg";
+import {ReactComponent as ThunderDay} from "../img/weather/ThunderDay.svg";
+import {ReactComponent as OvercastDay} from "../img/weather/OvercastDay.svg";
+import {format} from "date-fns/fp";
 
 
 function UpcomingDays({weatherData}) {
@@ -22,11 +22,11 @@ function UpcomingDays({weatherData}) {
                 {forecast.map(day => (
                     <Day
                         key={day.time}
-                        name={day.time}
-                        weatherCode={day.wmo_code}
+                        time={day.time}
+                        wmo_code_desc={day.wmo_code_desc}
                         status={day.wmo_code_desc}
-                        temp={`${day.temperature_2m_max}ºc`}
-                        nightTemp={`${day.temperature_2m_min}ºc`}
+                        temperature_2m_max={day.temperature_2m_max}
+                        temperature_2m_min={day.temperature_2m_min}
                     />
                 ))}
             </div>
@@ -36,56 +36,52 @@ function UpcomingDays({weatherData}) {
 }
 
 
-function Day({name, weatherCode, status, temp, nightTemp}) {
-    let Img;
-    switch (weatherCode) {
-        case 0: // Clear
-            Img = <Sun/>;
-            break;
-        case 1:// Cloudy
-        case 2:
-        case 3:
-        case 86:
-        case 45:
-            Img = <Cloudy/>;
-            break;
-        case 61: // Rain
-        case 66:
-        case 51:
-        case 80:
-        case 55:
-        case 53:
-            Img = <Rain/>;
-            break;
-        case 63: // Storm
-        case 65:
-        case 95:
-            Img = <Storm/>;
-            break;
-        case 85://Snow
-        case 71:
-        case 73:
-            Img = <Snow/>
-            break;
-        default:
-            Img = null;
-            break;
+function Day({time, status, wmo_code_desc, temperature_2m_min,temperature_2m_max  }) {
+    function WmoCodeDesc(wmo_code_desc){
+        let Img;
+        switch (wmo_code_desc) {
+            case "Clear":
+                Img = <ClearDay/>;
+                break;
+            case "Cloudy":
+                Img = <CloudyDay/>;
+                break;
+            case "Overcast":
+                Img = <OvercastDay/>;
+                break;
+            case "Rain":
+                Img = <RainDay/>;
+                break;
+            case "Snow":
+                Img = <SnowDay/>;
+                break;
+            case  "Thunder":
+                Img = <ThunderDay/>;
+                break;
+            default:
+                return null;
+        }
+        return Img;
     }
 
+    const weatherDescription = WmoCodeDesc(wmo_code_desc);
+    const temp_2m_min = Math.floor(temperature_2m_min);
+    const temp_2m_max = Math.floor(temperature_2m_max);
+    const dayOfWeek = format("EEEE ", new Date(time));
 
     return (
         <div className={"next-days__card day"}>
-            <h3 className={"h3"}>{name}</h3>
+            <h3 className={"h3"}>{dayOfWeek}</h3>
             <div className={"img-wrapper"}>
-                {Img}
+                {weatherDescription}
             </div>
             <div className={" day__desc"}>
                 <div className={"day__status"}>
                     <p>{status}</p>
                 </div>
                 <div className={"day__temp-wrapper"}>
-                    <p>{temp}</p>
-                    <p className={"day__night-temp"}>{nightTemp}</p>
+                    <p>{`${temp_2m_max}ºc`}</p>
+                    <p className={"day__night-temp"}>{`${temp_2m_min}ºc`}</p>
                 </div>
             </div>
         </div>
