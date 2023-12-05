@@ -5,7 +5,6 @@ import Today from "./Today";
 import UpcomingDays from "./UpcomingDays";
 import Logo from "../img/logo/Logo.svg";
 
-
 async function getCities() {
     return fetch('https://simple-weather-xrgybod3fq-ew.a.run.app/api/v1/cities')
         .then(response => response.json())
@@ -15,11 +14,9 @@ async function getCities() {
 }
 
 function Main() {
-
     const [cities, setCities] = useState(['']);
     const [weatherData, setWeatherData] = useState(null);
     const [isLoading, setIsLoading]= useState(false);
-
 
     useEffect(() => {
         setIsLoading(true);
@@ -45,7 +42,6 @@ function Main() {
         }
     };
 
-
     return (
         <div className={"forecast"}>
             <div className={'forecast__column1 '}>
@@ -62,8 +58,6 @@ function Main() {
                 <UpcomingDays weatherData={weatherData}/>
             </div>
         </div>
-
-
     )
 }
 

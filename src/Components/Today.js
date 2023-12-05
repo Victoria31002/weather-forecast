@@ -1,4 +1,5 @@
 import React from "react";
+import {formatDate, formatTime, formatTemperature, isDayTime, LocationAddress, getCurrentHour} from "./Utils";
 import {ReactComponent as ClearDay} from "../img/weather-today/ClearDay.svg";
 import {ReactComponent as ClearNight} from "../img/weather-today/ClearNight.svg";
 import {ReactComponent as CloudyDay} from "../img/weather-today/CloudyDay.svg";
@@ -23,16 +24,15 @@ import bgThunderDay from "../img/background/bgThunderDay.jpg";
 import bgThunderNight from "../img/background/bgThunderNight.jpg";
 import bgOvercastDay from "../img/background/bgOvercastDay.jpg";
 import bgOvercastNight from "../img/background/bgOvercastNight.jpg";
-import {format} from "date-fns/fp";
 
 function Today({weatherData}) {
     if (!weatherData) {
         return null;
     }
-    const {time, city, temperature_now, temperature_max, temperature_min, wmo_code_desc} = weatherData;
 
-    const currentHour = parseInt(time.split('T')[1].split(':')[0], 10);
-    const isDaytime = currentHour >= 6 && currentHour < 18;
+    const {time, city, wmo_code_desc, temperature_now, temperature_max, temperature_min} = weatherData;
+    const currentHour = getCurrentHour(time);
+    const isDaytime = isDayTime(currentHour);
 
     function WMOCodeToDescription(wmo_code_desc) {
         let Img;
@@ -90,56 +90,36 @@ function Today({weatherData}) {
 
     const background_today = Background(wmo_code_desc)
     const weatherDescription = WMOCodeToDescription(wmo_code_desc);
-    const formattedData = format("EEEE, dd MMMM yyyy ", new Date(time));
-    const currentTime = format("HH:mm", new Date(time));
-    const temp_now = Math.floor(temperature_now);
-    const temp_max = Math.floor(temperature_max);
-    const temp_min = Math.floor(temperature_min);
+    const formattedData = formatDate(new Date(time));
+    const currentTime = formatTime(new Date(time));
+    const temp_now = formatTemperature(temperature_now);
+    const temp_max = formatTemperature(temperature_max);
+    const temp_min = formatTemperature(temperature_min);
 
-
-
-
-return (
-    <div className={'info-today'} style={{backgroundImage: `url(${background_today})`}}>
-        <div className={'location'}>
-            <div>
-                <h1 className={"location__address"}> {LocationAddress(city)}</h1>
-                <p className={"location-data"}>{formattedData}</p>
+    return (
+        <div className={'info-today'} style={{backgroundImage: `url(${background_today})`}}>
+            <div className={'location'}>
+                <div>
+                    <h1 className={"location__address"}> {LocationAddress(city)}</h1>
+                    <p className={"location-data"}>{formattedData}</p>
+                </div>
+                <p className={"location__time"}>{currentTime}</p>
             </div>
-
-            <p className={"location__time"}>{currentTime}</p>
-        </div>
-        <div className={'weather-today'}>
-            <div className={"weather-today__temp temp"}>
-
-                <p className={"temp__value"}>{temp_now}ºc</p>
-
-                <div className={"temp__details"}>
-
-                    <p className={"temp__today"}>{temp_max}ºc / {temp_min}ºc </p>
-
-                    <div className={"divider"}/>
-
-                    <p className={"temp__desc"}>{wmo_code_desc}</p>
+            <div className={'weather-today'}>
+                <div className={"weather-today__temp temp"}>
+                    <p className={"temp__value"}>{temp_now}ºc</p>
+                    <div className={"temp__details"}>
+                        <p className={"temp__today"}>{temp_max}ºc / {temp_min}ºc </p>
+                        <div className={"divider"}/>
+                        <p className={"temp__desc"}>{wmo_code_desc}</p>
+                    </div>
+                </div>
+                <div className={"weather-today__img-wrapper"}>
+                    {weatherDescription}
                 </div>
             </div>
-
-            <div className={"weather-today__img-wrapper"}>
-                {weatherDescription}
-            </div>
         </div>
-    </div>
-)
-
-}
-
-function LocationAddress(city) {
-    if (!city || !city.name || !city.country) {
-        return null;
-    }
-    return (
-        <h1 className={"location__address"}>{city.name}{city.name && city.country ? `, ${city.country}` : ''}</h1>
-    );
+    )
 }
 
 export default Today

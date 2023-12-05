@@ -21,7 +21,6 @@
     --text-regular: 400;
     --text-extra-bold: 800;
     --accent-color: #22d9c8;
-
 }
 
 *, *::before, *::after {
@@ -78,7 +77,6 @@ p, h1, h2, h3, h4, h5, h6 {
     font-style: normal;
 }
 
-
 .forecast {
     display: flex;
     gap: 25px;
@@ -95,14 +93,12 @@ p, h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: center;
     padding: 25px;
-
 }
 
 .header {
     display: flex;
     gap: 16px;
 }
-
 
 .forecast__column1 {
     display: flex;
@@ -284,7 +280,6 @@ p, h1, h2, h3, h4, h5, h6 {
 hr {
     border-color: var(--bg-color-gray700);
 }
-
 
 .next-days {
     display: flex;

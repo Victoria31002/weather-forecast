@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import Select from "react-select";
 
-
 const customStyles = {
     option: (provided, state) => ({
         ...provided,
@@ -11,7 +10,6 @@ const customStyles = {
         borderRadius: '8px',
         color: 'var( --text-color-gray100);',
         cursor: 'pointer;',
-
     }),
     control: (provided, state) => ({
         ...provided,
@@ -21,25 +19,19 @@ const customStyles = {
         borderRadius: '8px;',
         cursor: 'pointer;',
         boxShadow: 'none;',
-
     }),
-
     menu: (provided, state) => ({
         ...provided,
         background: 'none',
         borderRadius: '8px'
-
     }),
     singleValue: (provided, state) => ({
         ...provided,
         color: 'var((--text-color-gray100))',
-
-
     }),
     input: (provided, state) => ({
         ...provided,
         color: 'var((--text-color-gray100))',
-
     }),
 
 };
@@ -47,9 +39,6 @@ const customStyles = {
 
 function SearchBar({cities, onCityChange, isLoading}) {
     const [selectedCity, setSelectedCity] = useState(null);
-
-
-
     const options = cities.map((city) => ({
         value: city,
         label: city,
@@ -57,14 +46,11 @@ function SearchBar({cities, onCityChange, isLoading}) {
 
     const handleCityChange = (selectedOption) => {
         setSelectedCity(selectedOption);
-
         if (selectedOption) {
             const city = selectedOption.value;
             onCityChange(city);
         }
     };
-
-
 
     return (
         <div className={'search-bar'}>

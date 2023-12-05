@@ -5,11 +5,9 @@ import {ReactComponent as RainDay} from "../img/weather/RainDay.svg";
 import {ReactComponent as SnowDay} from "../img/weather/SnowDay.svg";
 import {ReactComponent as ThunderDay} from "../img/weather/ThunderDay.svg";
 import {ReactComponent as OvercastDay} from "../img/weather/OvercastDay.svg";
-import {format} from "date-fns/fp";
-
+import {formatDayOfWeek, formatTemperatureMinMax} from "./Utils";
 
 function UpcomingDays({weatherData}) {
-
     if (!weatherData) {
         return null;
     }
@@ -31,10 +29,8 @@ function UpcomingDays({weatherData}) {
                 ))}
             </div>
         </div>
-
     )
 }
-
 
 function Day({time, status, wmo_code_desc, temperature_2m_min,temperature_2m_max  }) {
     function WmoCodeDesc(wmo_code_desc){
@@ -65,9 +61,8 @@ function Day({time, status, wmo_code_desc, temperature_2m_min,temperature_2m_max
     }
 
     const weatherDescription = WmoCodeDesc(wmo_code_desc);
-    const temp_2m_min = Math.floor(temperature_2m_min);
-    const temp_2m_max = Math.floor(temperature_2m_max);
-    const dayOfWeek = format("EEEE ", new Date(time));
+    const { tempMin, tempMax } = formatTemperatureMinMax(temperature_2m_min, temperature_2m_max);
+    const dayOfWeek = formatDayOfWeek(time);
 
     return (
         <div className={"next-days__card day"}>
@@ -80,14 +75,13 @@ function Day({time, status, wmo_code_desc, temperature_2m_min,temperature_2m_max
                     <p>{status}</p>
                 </div>
                 <div className={"day__temp-wrapper"}>
-                    <p>{`${temp_2m_max}ºc`}</p>
-                    <p className={"day__night-temp"}>{`${temp_2m_min}ºc`}</p>
+                    <p>{`${tempMin}ºc`}</p>
+                    <p className={"day__night-temp"}>{`${tempMax}ºc`}</p>
                 </div>
             </div>
         </div>
     )
 }
-
 
 export default UpcomingDays
 
